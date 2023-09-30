@@ -51,16 +51,16 @@ elif ! command -v systemctl >/dev/null 2>&1; then
   exit 1
 else
   if command -v netstat >/dev/null 2>&1; then
-    check_port=$(netstat -lnp | grep 6688 | awk '{print $7}' | awk -F/ '{print $1}')
+    check_port=$(netstat -lnp | grep 5244 | awk '{print $7}' | awk -F/ '{print $1}')
   else
     echo -e "${GREEN_COLOR}端口检查 ...${RES}"
     if command -v yum >/dev/null 2>&1; then
       yum install net-tools -y >/dev/null 2>&1
-      check_port=$(netstat -lnp | grep 6688 | awk '{print $7}' | awk -F/ '{print $1}')
+      check_port=$(netstat -lnp | grep 5244 | awk '{print $7}' | awk -F/ '{print $1}')
     else
       apt-get update >/dev/null 2>&1
       apt-get install net-tools -y >/dev/null 2>&1
-      check_port=$(netstat -lnp | grep 6688 | awk '{print $7}' | awk -F/ '{print $1}')
+      check_port=$(netstat -lnp | grep 5244 | awk '{print $7}' | awk -F/ '{print $1}')
     fi
   fi
 fi
@@ -130,7 +130,7 @@ EOF
 SUCCESS() {
   clear
   echo "Alist 安装成功！"
-  echo -e "\r\n访问地址：${GREEN_COLOR}http://YOUR_IP:6688/${RES}\r\n"
+  echo -e "\r\n访问地址：${GREEN_COLOR}http://YOUR_IP:5244/${RES}\r\n"
 
   echo -e "配置文件路径：${GREEN_COLOR}$INSTALL_PATH/data/config.json${RES}"
 
